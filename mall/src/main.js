@@ -2,6 +2,7 @@ import Vue from 'vue'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import less from 'less'
 // import env from './env'
 import App from './App.vue'
 // mock开关
@@ -27,7 +28,7 @@ axios.interceptors.response.use(function(response) {
     alert(res.msg)
   }
 })
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios).use(less)
 Vue.config.productionTip = false
 
 new Vue({
