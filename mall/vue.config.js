@@ -4,9 +4,13 @@ module.exports = {
     port: 8090,
     proxy: {
       '/api': {
-        target: 'www.baidu.com',
-        changeOrigin: false
+        target: 'https://www.imooc.com',
+        changeOrigin: false,
+        pathRewrite: {
+          '/api': ''
+        }
       }
     }
   }
 }
+// 接口代理
