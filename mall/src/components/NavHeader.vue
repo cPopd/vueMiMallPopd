@@ -26,10 +26,15 @@
         <div class="header-menu">
           <div class="item-menu">
             <span>小米手机</span>
-            <div class="children"></div>
+            <div class="children">
+            </div>
+          </div>
+          <div class="item-menu">
             <span>RedMi红米</span>
             <div class="children"></div>
-            <span>电视</span>
+          </div>
+          <div class="item-menu">
+            <span>RedMi红米</span>
             <div class="children"></div>
           </div>
         </div>
@@ -89,6 +94,7 @@ export default {
     .nav-header{
       .container{
         height: 112px;
+        position: relative;
         .flex();
         .header-logo{
           display: inline-block;
@@ -126,10 +132,12 @@ export default {
             font-weight: bold;
             font-size: 16px;
             line-height: 112px;
-            display: flex;
+            margin-right: 20px;
             span{
               cursor: pointer;
-              margin-right: 20px;
+            }
+            &:hover{
+              color: #FF6600;
             }
           }
         }
