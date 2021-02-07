@@ -4,8 +4,8 @@ module.exports = {
     port: 8090,
     proxy: {
       '/api': {
-        target: 'https://www.imooc.com',
-        changeOrigin: false,
+        target: 'http://mall-pre.springboot.cn',
+        changeOrigin: true,
         pathRewrite: {
           '/api': ''
         }
