@@ -279,6 +279,7 @@ export default {
 @import url("../assets/resource/less/config.less");
 @import url("../assets/resource/less/base.less");
 .index {
+  transition: all .5s;
   .container {
     .swiper-box {
       .nav-menu {
