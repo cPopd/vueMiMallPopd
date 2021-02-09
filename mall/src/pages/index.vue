@@ -2,6 +2,11 @@
   <div class="index">
     <div class="container">
       <div class="swiper-box">
+        <div class="nav-menu">
+          <ul class="menu-wrap">
+            <li></li>
+          </ul>
+        </div>
         <swiper
           :slides-per-view="5"
           :space-between="50"
@@ -18,6 +23,8 @@
           <div class="swiper-pagination" slot="pagination"></div>
           <div class="swiper-button-prev" slot="button-prev"></div>
           <div class="swiper-button-next" slot="button-next"></div>
+          <div class="swiper-lazy-preloader"></div>
+          <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
         </swiper>
       </div>
       <div class="ads-box"></div>
@@ -53,18 +60,31 @@ export default {
   data() {
     return {
       swiperOption: {
+        // 分页器
         pagination: {
           el: ".swiper-pagination"
         },
         navigation: {
+          //点击左右
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev"
         },
-        effect: "cube",
-        speed: 2000,
+        effect: "cube", // 翻转效果
+        speed: 2000, //切换速度
         autoplay: {
+          //自动播放
           delay: 2000,
           disableOnInteraction: false
+        },
+        loop: true, //点到头后可以继续点
+        cubeEffect: {
+          slideShadows: true,
+          shadow: true,
+          shadowOffset: 80,
+          shadowScale: 0.6
+        },
+        lazy: {
+          loadPrevNext: true
         }
       },
       slideList: [
