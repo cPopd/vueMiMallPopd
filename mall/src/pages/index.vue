@@ -117,13 +117,13 @@
             <div class="list-box">
               <div class="list" v-for="(item, index) in phoneList" :key="index">
                 <div class="item" v-for="(icem, iddex) in item" :key="iddex">
-                  <span>新品</span>
-                <div class="item-img"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4c87947d104ee5833913e4c520108f16.jpg" alt=""></div>
+                  <span :class="{ 'new-color' : iddex%2==0}">新品</span>
+                <div class="item-img"><img :src="icem.mainImage" alt=""></div>
 
                   <div class="item-info">
-                    <h3>小米9</h3>
-                    <p>晓龙555555555</p>
-                    <p class="price">2999元</p>
+                    <h3>{{ icem.name }}</h3>
+                    <p>{{ icem.subtitle}}</p>
+                    <p class="price">{{ icem.price }}元</p>
                   </div>
                 </div>
               </div>
@@ -257,10 +257,7 @@ export default {
           img: "/imgs/ads/ads-4.jpg"
         }
       ],
-      phoneList: [
-        [1, 1, 1, 1],
-        [1, 1, 1, 1]
-      ]
+      phoneList: []
     };
   },
   methods: {
@@ -269,7 +266,21 @@ export default {
     },
     onSlideChange() {
       console.log("slide change");
+    },
+    init() {
+      this.axios.get('/products', {
+        params: {
+          categoryId: 100012,
+          pageSize: 8
+        }
+      }).then((res) => {
+        this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)]
+        console.log(this.phoneList)
+      })
     }
+  },
+  mounted () {
+    this.init()
   }
 };
 </script>
@@ -409,10 +420,23 @@ export default {
               background-color: @colorG;
               text-align: center;
               span {
+                display: inline-block;
+                width: 67px;
+                height: 24px;
+                font-size: 14px;
+                color: @colorG;
+                line-height: 24px;
+                &.new-color{
+                  background-color: #7ECF68;
+                }
+                &.kill-color{
+                  background-color: #E82626;
+                }
               }
               .item-img {
                 img {
                   height: 195px;
+                  width: 100%;
                 }
               }
               .item-info {
